@@ -108,7 +108,7 @@ class MainWindow(QMainWindow):
             size = str(header.split(",")[2].split(":")[1].split(";")[0], "utf-8")
 
             if QMessageBox.Yes == QMessageBox.question(self, "QTCPServer", f"You are receiving an attachment from sd:{descriptor} of size: {size} bytes, called {file_name}. Do you want to accept it?"):
-                location = QStandardPaths.writableLocation(QStandardPaths.DownloadLocation).replace(os.sep, '/') + "/"
+                location = QStandardPaths.writableLocation(QStandardPaths.DownloadLocation) + "/"
                 file_path = QFileDialog.getSaveFileName(self, "Save File", location + file_name, f"File (*.{ext})")[0]
 
                 file = QFile(file_path)
