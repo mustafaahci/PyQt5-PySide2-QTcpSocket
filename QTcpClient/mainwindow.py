@@ -20,8 +20,8 @@ class MainWindow(QMainWindow):
         self.status_bar = QStatusBar()
         self.text_browser_received_messages = QTextBrowser()
         self._controller_layout = QHBoxLayout()
-        self.lineEdit_message = QLineEdit()
-        self._controller_layout.addWidget(self.lineEdit_message)
+        self.line_edit_message = QLineEdit()
+        self._controller_layout.addWidget(self.line_edit_message)
         self._buttons_layout = QHBoxLayout()
         self.send_message_button = QPushButton("Send Message")
         self.send_message_button.clicked.connect(self.on_send_message_button_clicked)
@@ -129,7 +129,7 @@ class MainWindow(QMainWindow):
             QMessageBox.critical(self, "QTCPServer", "Socket doesn't seem to be opened")
             return
 
-        string = self.lineEdit_message.text()
+        string = self.line_edit_message.text()
         socket_stream = QDataStream(self.socket)
         socket_stream.setVersion(QDataStream.Qt_5_15)
         header = QByteArray()
@@ -143,7 +143,7 @@ class MainWindow(QMainWindow):
 
         socket_stream << byte_array
 
-        self.lineEdit_message.clear()
+        self.line_edit_message.clear()
 
     def on_send_attachment_button_clicked(self):
         if not self.socket:

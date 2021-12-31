@@ -25,9 +25,9 @@ class MainWindow(QMainWindow):
         self._controller_layout = QHBoxLayout()
         self.combobox_receiver = QComboBox()
         self.combobox_receiver.insertItem(-1, "Broadcast")
-        self.lineEdit_message = QLineEdit()
+        self.line_edit_message = QLineEdit()
         self._controller_layout.addWidget(self.combobox_receiver)
-        self._controller_layout.addWidget(self.lineEdit_message)
+        self._controller_layout.addWidget(self.line_edit_message)
         self._buttons_layout = QHBoxLayout()
         self.send_message_button = QPushButton("Send Message")
         self.send_message_button.clicked.connect(self.send_message_button_clicked)
@@ -161,7 +161,7 @@ class MainWindow(QMainWindow):
                 if socket.socketDescriptor() == int(receiver):
                     self.send_message(socket)
                     return
-        self.lineEdit_message.clear()
+        self.line_edit_message.clear()
 
     def send_attachment_button_clicked(self):
         receiver = self.combobox_receiver
@@ -177,7 +177,7 @@ class MainWindow(QMainWindow):
                 if socket.socketDescriptor() == receiver.currentData():
                     self.send_attachment(socket, file_path)
                     return
-        self.lineEdit_message.clear()
+        self.line_edit_message.clear()
 
     def send_message(self, socket: QTcpSocket):
         if not socket:
@@ -188,7 +188,7 @@ class MainWindow(QMainWindow):
             QMessageBox.critical(self, "QTCPServer", "Socket doesn't seem to be opened")
             return
 
-        string = self.lineEdit_message.text()
+        string = self.line_edit_message.text()
         socket_stream = QDataStream(socket)
         socket_stream.setVersion(QDataStream.Qt_5_15)
         header = QByteArray()
