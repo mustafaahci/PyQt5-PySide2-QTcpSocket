@@ -1,8 +1,7 @@
-import os
 import sys
 from typing import List
 
-from PySide2.QtCore import Signal, QByteArray, QDataStream, QStandardPaths, QFile, QIODevice, QFileInfo, SIGNAL
+from PySide2.QtCore import Signal, QByteArray, QDataStream, QStandardPaths, QFile, QIODevice, QFileInfo
 from PySide2.QtNetwork import QTcpServer, QHostAddress, QTcpSocket, QAbstractSocket
 from PySide2.QtWidgets import QMainWindow, QMessageBox, QStatusBar, QHBoxLayout, QWidget, QPushButton, QVBoxLayout, \
     QTextBrowser, QComboBox, QLineEdit, QFileDialog, QApplication
