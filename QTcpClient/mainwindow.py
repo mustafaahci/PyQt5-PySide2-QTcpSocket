@@ -7,7 +7,7 @@ from PySide2.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QStatusBar, QTe
 
 
 class MainWindow(QMainWindow):
-    new_message = Signal(bytes)
+    new_message = Signal(str)
 
     def __init__(self):
         super().__init__()
